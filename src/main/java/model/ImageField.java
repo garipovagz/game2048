@@ -1,37 +1,71 @@
 package model;
 
 import javafx.scene.image.Image;
-
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
+import java.io.InputStream;
 
 public class ImageField {
-    int size;
-    Image [][] fieldImage;
-    public ImageField(int size){
+    private int size;
+    private Image [][] fieldImage;
+    ImageField(int size){
         this.size = size;
         fieldImage = new Image[size][size];
     }
     public Image fromField(int i, int j) {
         return fieldImage[i][j];
     }
-    public void setImage (int i, int j, Image image)  {
+    void setImage(int i, int j, Image image)  {
+
         fieldImage[i][j] = image;
     }
-    public Image getImage (int num) throws FileNotFoundException {
+    Image getImage(int num) {
         switch (num) {
-            case 2 : return new Image(new FileInputStream("src/main/resources/images/num2.png")) ;
-            case 4 : return new Image(new FileInputStream("src/main/resources/images/num4.png")) ;
-            case 8 : return new Image(new FileInputStream("src/main/resources/images/num8.png")) ;
-            case 16 : return new Image(new FileInputStream("src/main/resources/images/num16.png")) ;
-            case 32 : return new Image(new FileInputStream("src/main/resources/images/num32.png")) ;
-            case 64 : return new Image(new FileInputStream("src/main/resources/images/num64.png")) ;
-            case 128 : return new Image(new FileInputStream("src/main/resources/images/num128.png")) ;
-            case 256 : return new Image(new FileInputStream("src/main/resources/images/num256.png")) ;
-            case 512 : return new Image(new FileInputStream("src/main/resources/images/num512.png")) ;
-            case 1024 : return new Image(new FileInputStream("src/main/resources/images/num1024.png")) ;
-            case 2048 : return new Image(new FileInputStream("src/main/resources/images/num2048.png")) ;
+            case 2 : {
+                InputStream image = getClass().getResourceAsStream("/images/num2.png");
+                return new Image(image);
+            }
+            case 4 : {
+                InputStream image = getClass().getResourceAsStream("/images/num4.png");
+                return new Image(image);
+            }
+            case 8 : {
+                InputStream image = getClass().getResourceAsStream("/images/num8.png");
+                return new Image(image);
+            }
+            case 16 : {
+                InputStream image = getClass().getResourceAsStream("/images/num16.png");
+                return new Image(image);
+            }
+            case 32 : {
+                InputStream image = getClass().getResourceAsStream("/images/num32.png");
+                return new Image(image);
+            }
+            case 64 :  {InputStream image = getClass().getResourceAsStream("/images/num64.png");
+                return new Image(image);
+            }
+            case 128 : {
+                InputStream image = getClass().getResourceAsStream("/images/num128.png");
+                return new Image(image);
+            }
+            case 256 : {
+                InputStream image = getClass().getResourceAsStream("/images/num256.png");
+                return new Image(image);
+            }
+            case 512 :
+            {
+                InputStream image = getClass().getResourceAsStream("/images/num512.png");
+                return new Image(image);
+            }
+            case 1024 : {
+                InputStream image = getClass().getResourceAsStream("/images/num1024.png");
+                return new Image(image);
+            }
+            case 2048 : {
+                InputStream image = getClass().getResourceAsStream("/images/num2048.png");
+                return new Image(image);
+            }
         }
-        return new Image(new FileInputStream("src/main/resources/images/empty.png")) ;
+        InputStream image = getClass().getResourceAsStream("/images/empty.png");
+        return new Image(image);
     }
 }
+
