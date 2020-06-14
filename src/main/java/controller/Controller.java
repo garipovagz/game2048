@@ -40,21 +40,41 @@ public class Controller {
                     game.left();
                 } catch (FileNotFoundException e) {
                 }
+                try {
+                    game.addNumber();
+                } catch (FileNotFoundException e) {
+
+                }
                 break;
             case RIGHT:
                 try {
                     game.right();
                 } catch (FileNotFoundException e) { }
+                try {
+                    game.addNumber();
+                } catch (FileNotFoundException e) {
+
+                }
                 break;
             case UP:
                 try {
                     game.up();
                 } catch (FileNotFoundException e) { }
+                try {
+                    game.addNumber();
+                } catch (FileNotFoundException e) {
+
+                }
                 break;
             case DOWN:
                 try {
                     game.down();
                 } catch (FileNotFoundException e) { }
+                try {
+                    game.addNumber();
+                } catch (FileNotFoundException e) {
+
+                }
                 break;
         }
         if (game.gameOver()) {

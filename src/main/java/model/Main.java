@@ -19,7 +19,6 @@ public class Main {
         }
         addCell();
         addCell();
-
     }
     private  void addCell() throws FileNotFoundException {
         for (int k = 0; k < 100; k++) {
@@ -90,10 +89,11 @@ public class Main {
                 join(i, j, -1, 0);
             }
         }
-
-        if (isMoved) addCell();
-
     }
+    public void addNumber() throws FileNotFoundException {
+        if (isMoved) addCell();
+    }
+
     public  void right() throws FileNotFoundException {
         isMoved = false;
         for (int j = 0; j < size; j++) {
@@ -104,7 +104,6 @@ public class Main {
                 join(i,j,1,0);
             }
         }
-        if (isMoved)  addCell();
     }
     public  void up() throws FileNotFoundException {
         isMoved = false;
@@ -116,7 +115,6 @@ public class Main {
                join(i,j,0, -1);
             }
         }
-        if (isMoved)  addCell();
     }
     public void down() throws FileNotFoundException {
         isMoved = false;
@@ -128,7 +126,6 @@ public class Main {
                join(i,j,0,1);
             }
         }
-        if (isMoved)  addCell();
     }
     public   boolean gameOver() {
         for (int i = 0; i < size; i++) {
