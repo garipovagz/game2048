@@ -15,6 +15,7 @@ public class MainTest {
             }
         }
     }
+
     @Test
     public void startGameCheck() throws FileNotFoundException {
         int[][] f2 = {
