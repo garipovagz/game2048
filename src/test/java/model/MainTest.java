@@ -17,7 +17,14 @@ public class MainTest {
     }
     @Test
     public void startGameCheck() throws FileNotFoundException {
-
+        int[][] f2 = {
+                {0,0,0,0},
+                {0,0,0,0},
+                {0,0,0,0},
+                {0,0,0,0}};
+        game.startGame();
+        Field f1 = game.getterField();
+        assertArrayEquals(f2,f1);
     }
     @Test
     public void left() throws FileNotFoundException {
