@@ -10,17 +10,15 @@ public class Main {
     private static ImageField imageField = new ImageField(size);
     private static Random random = new Random();
     private static boolean isMoved ;
-    private static int score;
     public  void startGame() throws FileNotFoundException {
         for (int i = 0 ; i < size; i++) {
             for (int j = 0 ; j < size; j++) {
                 set(i,j,0);
             }
         }
-        addCell();
-        addCell();
+
     }
-    private  void addCell() throws FileNotFoundException {
+    public   void addCell() throws FileNotFoundException {
         for (int k = 0; k < 100; k++) {
             int i = random.nextInt(size);
             int j = random.nextInt(size);
@@ -53,12 +51,14 @@ public class Main {
             }
         }
     }
+    public void addNumber() throws FileNotFoundException {
+        if (isMoved) addCell();
+    }
     private void join(int i, int j, int stepI, int stepJ) throws FileNotFoundException {
         if (field.getCell(i,j) > 0) {
             if (field.getCell(i + stepI , j + stepJ) == field.getCell(i,j)) {
                 set(i + stepI, j + stepJ, field.getCell(i, j) * 2);
                 set(i, j, 0);
-                score += field.getCell(i, j) * 2;
                 int x = i;
                 int y = j;
                 if (stepI == - 1 || stepJ == - 1) {
@@ -90,10 +90,10 @@ public class Main {
             }
         }
     }
-    public void addNumber() throws FileNotFoundException {
-        if (isMoved) addCell();
-    }
 
+    public Field getterField() {
+        return field;
+    }
     public  void right() throws FileNotFoundException {
         isMoved = false;
         for (int j = 0; j < size; j++) {
@@ -136,11 +136,17 @@ public class Main {
             }
         }
         for (int i = 1; i < size - 1; i++) {
-            for (int j = 1; j < size - 1 ; j++) {
+            for (int j = 0; j < size  ; j++) {
                 if ((field.getCell(i,j) == field.getCell(i + 1,j))
-                        || (field.getCell(i,j) == field.getCell(i - 1,j))
-                        || (field.getCell(i,j) == field.getCell(i,j - 1))
-                        || (field.getCell(i,j) == field.getCell(i,j + 1))) {
+                        || (field.getCell(i,j) == field.getCell(i - 1,j))) {
+                    return false;
+                }
+            }
+        }
+        for (int i = 0; i < size ; i++) {
+            for (int j = 1; j < size - 1 ; j++) {
+                if (((field.getCell(i,j) == field.getCell(i,j - 1))
+                        || (field.getCell(i,j) == field.getCell(i,j + 1)))) {
                     return false;
                 }
             }

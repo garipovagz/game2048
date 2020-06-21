@@ -26,6 +26,8 @@ public class Controller {
         Group root = new Group(gridPane);
         try {
             game.startGame();
+            game.addCell();
+            game.addCell();
         } catch (FileNotFoundException ignored) { }
         drawField();
         Scene scene = new Scene(root, 400, 400);
@@ -84,6 +86,11 @@ public class Controller {
             ima.setFitWidth(400);
             ima.setFitHeight(400);
             gridPane.add(ima, 0, 0);
+            try {
+                game.startGame();
+            } catch (FileNotFoundException e) {
+            }
+            drawField();
         }
         if (game.win()) {
             InputStream image = Controller.class.getResourceAsStream("/images/win.png");
@@ -92,6 +99,11 @@ public class Controller {
             ima.setFitWidth(400);
             ima.setFitHeight(400);
             gridPane.add(ima, 0, 0);
+            try {
+                game.startGame();
+            } catch (FileNotFoundException e) {
+            }
+            drawField();
         }
         drawField();
     };
