@@ -1,29 +1,26 @@
 package model;
-
-
 import java.io.FileNotFoundException;
 import java.util.Random;
 
 public class Main {
     private static int size = 4;
-    private static Field field = new Field(size);
-    private static ImageField imageField = new ImageField(size);
-    private static Random random = new Random();
-    private static boolean isMoved ;
+    private  Field field = new Field(size);
+    private ImageField imageField = new ImageField(size);
+    private Random random = new Random();
+    private boolean isMoved ;
     public  void startGame() throws FileNotFoundException {
         for (int i = 0 ; i < size; i++) {
             for (int j = 0 ; j < size; j++) {
                 set(i,j,0);
             }
         }
-
     }
-    public   void addCell() throws FileNotFoundException {
+    public void addCell() throws FileNotFoundException {
         for (int k = 0; k < 100; k++) {
             int i = random.nextInt(size);
             int j = random.nextInt(size);
             if (field.getCell(i, j) == 0) {
-                int num = (int) (Math.random() * 2);
+                int num = (int) (Math.random() * 2 );
                 if ( num == 0) {
                     num = num + 4;
                 } else num = num * 2;
@@ -31,6 +28,9 @@ public class Main {
                 return;
             }
         }
+    }
+    public void addNumber() throws FileNotFoundException {
+        if (isMoved) addCell();
     }
     private void move(int i, int j, int stepI, int stepJ) throws FileNotFoundException {
         if (field.getCell(i,j) > 0) {
@@ -51,10 +51,7 @@ public class Main {
             }
         }
     }
-    public void addNumber() throws FileNotFoundException {
-        if (isMoved) addCell();
-    }
-    private void join(int i, int j, int stepI, int stepJ) throws FileNotFoundException {
+    private  void join(int i, int j, int stepI, int stepJ) throws FileNotFoundException {
         if (field.getCell(i,j) > 0) {
             if (field.getCell(i + stepI , j + stepJ) == field.getCell(i,j)) {
                 set(i + stepI, j + stepJ, field.getCell(i, j) * 2);
@@ -89,10 +86,6 @@ public class Main {
                 join(i, j, -1, 0);
             }
         }
-    }
-
-    public Field getterField() {
-        return field;
     }
     public  void right() throws FileNotFoundException {
         isMoved = false;
@@ -169,5 +162,8 @@ public class Main {
     }
     public ImageField setterField() {
         return imageField;
+    }
+    Field getterField() {
+        return field;
     }
 }

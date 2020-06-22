@@ -19,7 +19,6 @@ public class Controller {
     public void setStage(Stage stage) {
         this.stage = stage;
     }
-
     @FXML
     private void startG() {
         game = new Main();
@@ -34,7 +33,6 @@ public class Controller {
         scene.setOnKeyPressed(handler);
         stage.setScene(scene);
     }
-
     private static EventHandler<KeyEvent> handler = event -> {
         switch (event.getCode()) {
             case LEFT:
@@ -111,8 +109,6 @@ public class Controller {
         for (int i = 0; i < 4; i++) {
             for (int j = 0; j < 4; j++) {
                 ImageView image = new ImageView(game.setterField().fromField(i, j));
-                image.setX(10);
-                image.setY(10);
                 image.setFitWidth(100);
                 image.setFitHeight(100);
                 gridPane.add(image, i, j);

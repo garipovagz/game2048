@@ -4,17 +4,14 @@ import javafx.scene.image.Image;
 import java.io.InputStream;
 
 public class ImageField {
-    private int size;
     private Image [][] fieldImage;
     ImageField(int size){
-        this.size = size;
         fieldImage = new Image[size][size];
     }
     public Image fromField(int i, int j) {
         return fieldImage[i][j];
     }
     void setImage(int i, int j, Image image)  {
-
         fieldImage[i][j] = image;
     }
     Image getImage(int num) {
